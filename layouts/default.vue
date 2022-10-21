@@ -6,13 +6,16 @@
         <Nuxt />
       </div>
     </section>
+    <LazyAppFooter />
   </main>
 </template>
 <script>
 import NavBar from "@/components/NavBar";
+import AppFooter from "@/components/AppFooter";
 export default {
   components: {
     NavBar,
+    AppFooter,
   },
 };
 </script>

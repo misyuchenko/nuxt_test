@@ -1,26 +1,30 @@
 <template>
   <div>
-    <h1 class="center">News</h1>
- 
-
-
-      
-      <div class="row">
-        <PostCard v-for="post in posts" :key="post.id" :post="post" />
-      </div>
-
+    <div class="row">
+      <ProductCard
+        v-for="product in products"
+        :key="product.id"
+        :product="product"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import PostCard from "~/components/PostCard.vue";
-import { mapGetters } from "vuex";
+import ProductCard from "~/components/ProductCard.vue";
+import { mapGetters, mapActions } from "vuex";
 export default {
   name: "IndexPage",
-  components: { PostCard },
-  computed: {
-    ...mapGetters({ posts: "posts/GET_POSTS" }),
+  components: { ProductCard },
+  mounted() {
+    this.fetchProducts()
   },
+  computed: {
+    ...mapGetters({ products: "products/GET_PRODUCTS" }),
+  },
+  methods:{
+    ...mapActions({fetchProducts:"products/FETCH_PRODUCTS"})
+  }
 };
 </script>
 <style>
